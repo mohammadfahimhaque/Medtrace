@@ -1,0 +1,1 @@
+import {serverReader,json,fail} from '@/lib/medtrace/server';export async function GET(_:Request,{params}:{params:Promise<{serial:string}>}){try{const p=await serverReader().getPack((await params).serial);return p?json(p):json({error:{code:'NOT_FOUND',message:'Pack not found'}},404)}catch(e){return fail(e)}}

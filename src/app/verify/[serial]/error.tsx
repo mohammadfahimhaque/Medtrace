@@ -1,0 +1,1 @@
+"use client";export default function ErrorPage({reset}:{reset:()=>void}){return <main className="verify-shell"><h2>Could not reach the network.</h2><p>This does not tell us whether the pack is registered.</p><button className="button primary" onClick={reset}>Try again</button></main>}

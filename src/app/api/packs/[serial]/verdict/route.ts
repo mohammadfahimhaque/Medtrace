@@ -1,0 +1,1 @@
+import {serverReader,json,fail} from '@/lib/medtrace/server';export async function GET(req:Request,{params}:{params:Promise<{serial:string}>}){try{return json(await serverReader().getVerdict((await params).serial,{pharmacy:new URL(req.url).searchParams.get('pharmacy')??undefined}))}catch(e){return fail(e)}}

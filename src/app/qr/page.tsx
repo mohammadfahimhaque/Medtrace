@@ -1,0 +1,1 @@
+import {serverReader} from '@/lib/medtrace/server';import {PrintSheet} from './PrintSheet';export const dynamic='force-dynamic';export default async function QR({searchParams}:{searchParams:Promise<{serial?:string}>}){const {serial}=await searchParams;return <PrintSheet serials={serial?[serial]:(await serverReader().listPacks()).map(p=>p.serial)}/>}

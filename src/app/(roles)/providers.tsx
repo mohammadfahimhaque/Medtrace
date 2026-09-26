@@ -1,0 +1,4 @@
+"use client";
+import {useState} from 'react';import {QueryClient,QueryClientProvider} from '@tanstack/react-query';import {ConnectionProvider,WalletProvider} from '@solana/wallet-adapter-react';import {WalletModalProvider} from '@solana/wallet-adapter-react-ui';import {Buffer} from 'buffer';import '@solana/wallet-adapter-react-ui/styles.css';
+if(typeof globalThis.Buffer==='undefined')globalThis.Buffer=Buffer;
+export function Providers({children}:{children:React.ReactNode}){const [q]=useState(()=>new QueryClient({defaultOptions:{queries:{staleTime:3000,retry:1}}}));return <ConnectionProvider endpoint={process.env.NEXT_PUBLIC_RPC_URL??'https://api.devnet.solana.com'}><WalletProvider wallets={[]} autoConnect><WalletModalProvider><QueryClientProvider client={q}>{children}</QueryClientProvider></WalletModalProvider></WalletProvider></ConnectionProvider>}

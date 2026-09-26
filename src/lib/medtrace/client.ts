@@ -1,0 +1,4 @@
+import {SOURCE} from './config';import {httpReader} from './http';import {createOnchainReader,createOnchainWriter} from './onchain';import type {MedTraceReader,MedTraceWriter} from './types';
+export type {MedTraceClient,MedTraceReader,MedTraceWriter} from './types';
+export const getReader=():MedTraceReader=>SOURCE==='onchain'?createOnchainReader():httpReader;
+export function getWriter(actor?:string):MedTraceWriter{if(SOURCE!=='mock')return createOnchainWriter();const write=async(action:string,data:unknown)=>{const r=await fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({actor,action,data})});const b=await r.json();if(!r.ok)throw Error(b.error.message);return b};return {mintPack:i=>write('mint',i),transferCustody:(serial,newHolder)=>write('transfer',{serial,newHolder}),dispense:serial=>write('dispense',{serial})}}

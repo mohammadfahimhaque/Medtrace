@@ -1,0 +1,32 @@
+{
+  "name": "medtrace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/next.cjs dev --webpack --hostname 0.0.0.0",
+    "build": "node scripts/next.cjs build --webpack",
+    "start": "next start",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "0.31.1",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/web3.js": "^1.98.0",
+    "@tanstack/react-query": "^5.0.0",
+    "buffer": "^6.0.3",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@next/swc-wasm-nodejs": "^16.3.6",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
+  }
+}

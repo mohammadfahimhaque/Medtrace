@@ -1,0 +1,3 @@
+import type {MedTraceReader} from './types';
+async function read<T>(path:string):Promise<T>{const r=await fetch(`/api/packs${path}`,{cache:'no-store'});const b=await r.json();if(!r.ok)throw Error(b.error?.message??'Network unavailable');return b}
+export const httpReader:MedTraceReader={getPack:async s=>{const r=await fetch(`/api/packs/${encodeURIComponent(s)}`,{cache:'no-store'});if(r.status===404)return null;if(!r.ok)throw Error('Could not load pack');return r.json()},listPacks:f=>read(`?${new URLSearchParams(f)}`),getVerdict:(s,c)=>read(`/${encodeURIComponent(s)}/verdict?${new URLSearchParams(c)}`)};
