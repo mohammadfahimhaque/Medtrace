@@ -3,3 +3,10 @@ node_modules/
 .env*
 !.env.example
 *.tsbuildinfo
+
+# Local caches, coverage and agent session state
+.codex/
+.entire/
+coverage/
+*.log
+.DS_Store
